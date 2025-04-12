@@ -1,0 +1,88 @@
+<html lang="en">
+    <head>
+    <meta charset="utf-8"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/styles/style.css" />
+
+    <title>{{title}}</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#what-is-ai">What is AI?</a></li>
+                <li><a href="#faces-of-ai">Faces of AI</a></li>
+                <li><a href="#stances">Stances on AI</a></li>
+                <li><a href="#responsible-use">Responsible Use</a></li>
+                <li><a href="#tools">AI Tools</a></li>
+                <li><a href="#future">AI & Career</a></li>
+                <li><a href="#wrap-up">Wrap-Up</a></li>
+            </ul>
+        </nav>
+        <header class="page-header">
+            <img src="../assets/img/banner.png" alt="AI Guide Header" class="header-image">
+        </header>
+
+        <main>
+            <section id="welcome">
+            <h2>Welcome and Goals of the Guide</h2>
+            <p>Welcome! This guide will help you explore AI's role in your academic journey.</p>
+            <button onclick="nextSection('what-is-ai')">Next</button>
+            </section>
+
+            <section id="what-is-ai">
+            <h2>What is AI (and What It Isn’t)</h2>
+            <p>Brief explanation here.</p>
+            <button onclick="nextSection('faces-of-ai')">Next</button>
+            </section>
+
+            <section id="faces-of-ai">
+            <h2>The Many Faces of AI in Computing</h2>
+            <p>Practical examples here.</p>
+            <button onclick="nextSection('stances')">Next</button>
+            </section>
+
+            <section id="stances">
+            <h2>Stances on AI: Ethics and Opinions</h2>
+            <form id="stanceForm">
+                <label for="stance">How do you feel about AI in education?</label>
+                <select id="stance" name="stance">
+                <option value="excited">Excited</option>
+                <option value="curious">Curious</option>
+                <option value="cautious">Cautious</option>
+                <option value="concerned">Concerned</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="stanceResponse"></div>
+            <button onclick="nextSection('responsible-use')">Next</button>
+            </section>
+
+            <section id="responsible-use">
+            <h2>Responsible AI Use</h2>
+            <p>Best practices for using AI responsibly.</p>
+            <button onclick="nextSection('tools')">Next</button>
+            </section>
+
+            <section id="tools">
+            <h2>Practical AI Tools for Students</h2>
+            <p>Tool recommendations based on your interests.</p>
+            <button onclick="nextSection('future')">Next</button>
+            </section>
+
+            <section id="future">
+            <h2>AI and the Future of Your Career</h2>
+            <p>What role will AI play in your future?</p>
+            <button onclick="nextSection('wrap-up')">Next</button>
+            </section>
+
+            <section id="wrap-up">
+            <h2>Wrap-Up and Personalized Plan</h2>
+            <div id="personalizedPlan"></div>
+            </section>
+        </main>
+
+        <script src="/src/main.js"></script>
+    </body>
+</html>
