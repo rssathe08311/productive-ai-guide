@@ -1,27 +1,26 @@
 // controllers/chatController.js
 
-const getChatResponse = async (req, res, openai) => {
+exports.getChatResponse = async (req, res, openai) => {
     try {
-      const { messages } = req.body;
-  
-      // Validate input
-      if (!Array.isArray(messages) || messages.length === 0) {
-        return res.status(400).json({ error: 'No messages provided' });
+      const { prompt } = req.body;
+      if (!prompt || typeof prompt !== 'string') {
+        return res.status(400).json({ error: 'Prompt must be a string' });
       }
   
-      // Call OpenAI API (v4 syntax)
       const completion = await openai.chat.completions.create({
-        model: 'gpt-4o',
-        messages,
+        model: 'gpt-4',
+        messages: [
+          { role: 'system', content: 'You are a helpful assistant for student AI literacy.' },
+          { role: 'user', content: prompt }
+        ],
+        temperature: 0.7
       });
   
-      const assistantMessage = completion.choices[0].message.content;
-      res.status(200).json({ assistantMessage });
+      res.json({ result: completion.choices[0].message.content });
     } catch (error) {
-      console.error('Error while calling OpenAI API:', error);
-      res.status(500).json({ error: 'OpenAI API error' });
+      console.error('OpenAI error:', error);
+      res.status(500).json({ error: 'Failed to generate response' });
     }
   };
   
-  module.exports = { getChatResponse };
   

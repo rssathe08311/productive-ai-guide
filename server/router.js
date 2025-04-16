@@ -12,7 +12,9 @@ const router = (app, openai) => {
   app.post('/image', (req, res) => {
     controllers.image.getImageResponse(req, res, openai);
   })
-  //stretch goal to have the user input their own key into the application so i dont have to spend hella money
+  app.post('/audio', (req, res) => {
+    controllers.audio.getSpeech(req, res, openai);
+  })
 };
 
 module.exports = router;

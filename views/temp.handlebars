@@ -1,0 +1,118 @@
+<html lang="en">
+    <head>
+    <meta charset="utf-8"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link rel="stylesheet" href="/styles/style.css" />
+
+    <title>{{title}}</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#what-is-ai">What is AI?</a></li>
+                <li><a href="#faces-of-ai">Faces of AI</a></li>
+                <li><a href="#stances">Stances on AI</a></li>
+                <li><a href="#responsible-use">Responsible Use</a></li>
+                <li><a href="#tools">AI Tools</a></li>
+                <li><a href="#future">AI & Career</a></li>
+                <li><a href="#wrap-up">Wrap-Up</a></li>
+            </ul>
+        </nav>
+        <header class="page-header">
+            <img src="../assets/img/banner.png" alt="AI Guide Header" class="header-image">
+        </header>
+
+        <main>
+            <section id="welcome">
+            <h1>Welcome to the AI Student Guide</h1>
+
+            <p>Starting college is an exciting time. Whether you’re just stepping into your first computing class or you’ve already dabbled in code, one thing is clear: AI is going to be a part of your journey. A big part.</p>
+
+            <p>This guide is here to help you navigate that. Not as a lecture, and not as a warning — but as a toolkit. Whether you’re curious about what AI can do, cautious about its role in education, or just looking for ways to make your study sessions a little easier, this guide is built for you.</p>
+
+            <p><strong>Our goal is simple:</strong></p>
+
+            <p>We want to show you how to work with AI, not for it — using it as a powerful assistant, while still keeping your own skills sharp and your learning front and center. AI can help brainstorm ideas, explain complex topics, or even speed up coding assignments. But it’s not a replacement for your thinking, creativity, or responsibility as a learner. You are still in the driver’s seat.</p>
+
+            <p>Along the way, we’ll cover:</p>
+            <ul>
+                <li>What AI actually is (beyond the hype),</li>
+                <li>How it’s already being used in computing,</li>
+                <li>The ethical questions you’ll want to consider,</li>
+                <li>Practical tools you can start using today,</li>
+                <li>And finally, how you can carry these lessons into your career.</li>
+            </ul>
+
+            <p>To make this guide more personal, we’ll ask you a few quick questions as you go. Your answers will help shape the experience and give you advice that fits your goals and mindset.</p>
+
+            <p><strong>So before we dive in — tell us: What brings you here today?</strong></p>
+
+            <ul>
+                <li>I'm curious about AI.</li>
+                <li>I want to learn responsible use.</li>
+                <li>I want to get ahead in classwork.</li>
+                <li>Something else entirely!</li>
+            </ul>
+
+            <p>Your journey starts here — let’s go.</p>
+            <button onclick="nextSection('what-is-ai')">Next</button>
+            </section>
+
+            <section id="what-is-ai">
+            <h2>What is AI (and What It Isn’t)</h2>
+            <p>Brief explanation here.</p>
+            <button onclick="nextSection('faces-of-ai')">Next</button>
+            </section>
+
+            <section id="faces-of-ai">
+            <h2>The Many Faces of AI in Computing</h2>
+            <p>Practical examples here.</p>
+            <button onclick="nextSection('stances')">Next</button>
+            </section>
+
+            <section id="stances">
+            <h2>Stances on AI: Ethics and Opinions</h2>
+            <form id="stanceForm">
+                <label for="stance">How do you feel about AI in education?</label>
+                <select id="stance" name="stance">
+                <option value="excited">Excited</option>
+                <option value="curious">I'm curious about AI.</option>
+                <option value="cautious">Cautious</option>
+                <option value="concerned">Concerned</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="stanceResponse"></div>
+            <button onclick="nextSection('responsible-use')">Next</button>
+            </section>
+
+            <section id="responsible-use">
+            <h2>Responsible AI Use</h2>
+            <p>Best practices for using AI responsibly.</p>
+            <button onclick="nextSection('tools')">Next</button>
+            </section>
+
+            <section id="tools">
+            <h2>Practical AI Tools for Students</h2>
+            <p>Tool recommendations based on your interests.</p>
+            <button onclick="nextSection('future')">Next</button>
+            </section>
+
+            <section id="future">
+            <h2>AI and the Future of Your Career</h2>
+            <p>What role will AI play in your future?</p>
+            <button onclick="nextSection('wrap-up')">Next</button>
+            </section>
+
+            <section id="wrap-up">
+            <h2>Wrap-Up and Personalized Plan</h2>
+            <div id="personalizedPlan"></div>
+            </section>
+        </main>
+
+        <script src="/src/main.js"></script>
+    </body>
+</html>

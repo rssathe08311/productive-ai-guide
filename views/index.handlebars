@@ -1,88 +1,276 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="utf-8"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="/styles/style.css" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-    <title>{{title}}</title>
-    </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="#welcome">Welcome</a></li>
-                <li><a href="#what-is-ai">What is AI?</a></li>
-                <li><a href="#faces-of-ai">Faces of AI</a></li>
-                <li><a href="#stances">Stances on AI</a></li>
-                <li><a href="#responsible-use">Responsible Use</a></li>
-                <li><a href="#tools">AI Tools</a></li>
-                <li><a href="#future">AI & Career</a></li>
-                <li><a href="#wrap-up">Wrap-Up</a></li>
-            </ul>
-        </nav>
-        <header class="page-header">
-            <img src="../assets/img/banner.png" alt="AI Guide Header" class="header-image">
-        </header>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/styles/style.css" />
 
-        <main>
-            <section id="welcome">
-            <h2>Welcome and Goals of the Guide</h2>
-            <p>Welcome! This guide will help you explore AI's role in your academic journey.</p>
-            <button onclick="nextSection('what-is-ai')">Next</button>
-            </section>
+  <title>{{title}}</title>
+</head>
 
-            <section id="what-is-ai">
-            <h2>What is AI (and What It Isn’t)</h2>
-            <p>Brief explanation here.</p>
-            <button onclick="nextSection('faces-of-ai')">Next</button>
-            </section>
+<body>
+  <!-- Navigation -->
+    <nav class="navbar is-light is-sticky" role="navigation" aria-label="main navigation" style="margin-bottom: 0;">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-            <section id="faces-of-ai">
-            <h2>The Many Faces of AI in Computing</h2>
-            <p>Practical examples here.</p>
-            <button onclick="nextSection('stances')">Next</button>
-            </section>
+    <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+        <a class="navbar-item" href="#welcome">Welcome</a>
+        <a class="navbar-item" href="#what-is-ai">What is AI?</a>
+        <a class="navbar-item" href="#faces-of-ai">Faces of AI</a>
+        <a class="navbar-item" href="#stances">Stances on AI</a>
+        <a class="navbar-item" href="#responsible-use">Responsible Use</a>
+        <a class="navbar-item" href="#tools">AI Tools</a>
+        <a class="navbar-item" href="#future">AI & Career</a>
+        <a class="navbar-item" href="#wrap-up">Wrap-Up</a>
+        </div>
+    </div>
+    </nav>
 
-            <section id="stances">
-            <h2>Stances on AI: Ethics and Opinions</h2>
-            <form id="stanceForm">
-                <label for="stance">How do you feel about AI in education?</label>
-                <select id="stance" name="stance">
+    <!-- Header -->
+    <section class="hero is-info is-small has-text-centered" style="position: relative; overflow: hidden; margin-top: 0;">
+    <div class="hero-body">
+        <div class="container">
+
+        <!-- Decorative Background Shape (optional for style) -->
+        <div style="position: absolute; top: -50px; left: -50px; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent); z-index: 0;"></div>
+        <img id="aiImageHeader" src="/assets/img/loading.gif" alt="AI Concept Image">
+
+        <!-- Main Title -->
+        <h1 class="title has-text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative; z-index: 1;">
+            AI Student Guide
+        </h1>
+
+        <!-- Optional Subtitle -->
+        <p class="subtitle has-text-light" style="position: relative; z-index: 1;">
+            Learn, explore, and grow your AI skills with confidence.
+        </p>
+
+        </div>
+    </div>
+    </section>
+
+
+  <main class="section">
+    <!-- Welcome Section -->
+    <section id="welcome" class="container content">
+    <h1 class="title">Welcome to the AI Student Guide</h1>
+    <img id="aiImageWelcome" src="/assets/img/loading.gif" alt="AI Concept Image">
+    <div class="field is-grouped is-align-items-center">
+        <button class="button is-link is-small" onclick="playSectionById('welcome', this)">🔊 Listen</button>
+        <span class="ml-3 has-text-grey" id="ttsStatus-welcome" style="font-size: 0.9em;"></span>
+    </div>
+
+
+    <p>At the beginning of your college career, you no doubt are filled with a bunch of questions and not very many answers. Curiosity about what your life will be like in and out of school, and being even somewhat tangential to the technology sphere means that you have no doubt become aware of Generative AI — and I’d wager have many questions, concerns, and ideas.</p>
+
+    <p>Whether you’re just stepping into your first computing class or you’ve already dabbled in code, one thing is clear: AI is going to be a part of your journey. A big part.</p>
+
+    <p>This guide is here to help you navigate that. Not as a lecture, and not as a warning — but as a toolkit. Whether you’re curious about what AI can do, cautious about its role in education, or just looking for ways to make your study sessions a little more productive and tailored, this guide is built for you.</p>
+
+    <p><strong>Our goal here is simple:</strong></p>
+
+    <p>I want to show you how to work with AI — not for it, and not have it work for you blindly, but using it as a powerful assistant, while still keeping your own skills sharp and your learning front and center. You are still in the driver’s seat.</p>
+
+    <ul>
+        <li>What AI actually is (beyond the hype),</li>
+        <li>How it’s already being used in computing,</li>
+        <li>The ethical questions you’ll want to consider,</li>
+        <li>Practical ways to include AI in how you work,</li>
+        <li>Tools you can start using today (and how),</li>
+        <li>A note about the future</li>
+        <li>A takeaway from this guide</li>
+    </ul>
+
+    <p>To make this guide more personal, we’ll ask you a few quick questions as you go. Your answers will help tailor the experience to your goals.</p>
+
+    <p><strong>So before we dive in — tell us: What brings you here today?</strong></p>
+
+    
+    </section>
+
+        <img id="aiImageSurvey" src="/assets/img/loading.gif" alt="AI Concept Image">
+    <h3 class="subtitle">Quick Check-In: How Are You Feeling About All This Before we Continue?</h3>
+    <form>
+        <p><strong>1. How familiar do you feel with Generative AI?</strong></p>
+        <label><input type="radio" name="aiFamiliarity" value="I’ve never used it"> I’ve never used it</label><br>
+        <label><input type="radio" name="aiFamiliarity" value="I’ve played around with it a bit"> I’ve played around with it a bit</label><br>
+        <label><input type="radio" name="aiFamiliarity" value="I use it regularly"> I use it regularly</label><br>
+        <label><input type="radio" name="aiFamiliarity" value="I feel super confident using it"> I feel super confident using it</label><br><br>
+
+        <p><strong>2. Which best describes how you feel about AI in school/work?</strong></p>
+        <label><input type="radio" name="aiFeeling" value="Excited — I think it’s a helpful tool"> Excited — I think it’s a helpful tool</label><br>
+        <label><input type="radio" name="aiFeeling" value="Curious but unsure"> Curious but unsure</label><br>
+        <label><input type="radio" name="aiFeeling" value="A little overwhelmed"> A little overwhelmed</label><br>
+        <label><input type="radio" name="aiFeeling" value="Worried — I’m not sure how to keep up"> Worried — I’m not sure how to keep up</label><br><br>
+
+        <p><strong>3. Has AI already changed how you approach assignments or creative projects?</strong></p>
+        <label><input type="radio" name="aiChange" value="Yes — I use it to brainstorm, draft, or check my work"> Yes — I use it to brainstorm, draft, or check my work</label><br>
+        <label><input type="radio" name="aiChange" value="Not yet, but I want to try"> Not yet, but I want to try</label><br>
+        <label><input type="radio" name="aiChange" value="Not really — I prefer doing things on my own"> Not really — I prefer doing things on my own</label><br>
+        <label><input type="radio" name="aiChange" value="I’m not sure how it would help"> I’m not sure how it would help</label><br><br>
+
+
+        <p><strong>4. One word or phrase that comes to mind when you think about AI in your future?</strong></p>
+        <input class="input" type="text" placeholder="Write your answer..." id="futurePhrase">
+
+        <!-- maybe add a little pop-up button for questions as you go along that moves with you -->
+        <p><strong>Do you have any questions?</strong></p>
+        <input class="input" type="text" placeholder="Write your answer..." id="questionBox">
+    </form>
+    <br>
+    <button class="button is-success mt-2" onclick="nextSection('what-is-ai')">Next</button>
+    <br>
+
+    <hr>
+
+
+    <!-- What is AI Section -->
+    <section id="what-is-ai" class="container content">
+
+        <h2 class="title">What is AI (and What It Isn’t)</h2>
+        <div id="imageLoader" class="has-text-centered mb-3">
+            <span class="icon is-large is-loading">
+                <i class="fas fa-spinner"></i>
+            </span>
+        </div>
+        <img id="aiImageExplanation" src="/assets/img/loading.gif" alt="AI Concept Image">
+        <div class="field is-grouped is-align-items-center">
+            <button class="button is-link is-small" onclick="playSectionById('what-is-ai', this)">🔊 Listen</button>
+            <span class="ml-3 has-text-grey" id="ttsStatus-what-is-ai" style="font-size: 0.9em;"></span>
+        </div>
+
+        <p>Let’s start with the basics.</p>
+
+        <p>Artificial Intelligence isn’t actually brand new — it’s been quietly working behind the scenes in things like search engines, recommendation systems, and voice assistants for years. But you’re probably thinking, “That’s not the AI everyone’s talking about now,” and you’re right.</p>
+
+        <p>The big shift is with Generative AI. Unlike older systems that mostly recognized patterns, this kind of AI can create new things — text, images, code, music, and more. That means tasks we used to think were uniquely human, like writing, designing, or composing, can now be (at least partially) done by machines.</p>
+
+        <p>For some, that’s exciting. For others, unsettling. Either way, it’s a big change. AI is now shaping how we work, learn, and even think — and staying curious, critical, and open to learning will help you navigate it.</p>
+
+        
+
+        <button class="button is-success mt-4" onclick="nextSection('faces-of-ai')">Next</button>
+    </section>
+
+
+
+
+    <!-- Faces of AI Section -->
+    <section id="faces-of-ai" class="container content">
+        <h2 class="title">The Many Faces of AI in Computing</h2>
+        <img id="aiImageFaces" src="/assets/img/loading.gif" alt="AI Concept Image">
+        <div class="field is-grouped is-align-items-center">
+            <button class="button is-link is-small" onclick="playSectionById('faces-of-ai', this)">🔊 Listen</button>
+            <span class="ml-3 has-text-grey" id="ttsStatus-faces-of-ai" style="font-size: 0.9em;"></span>
+        </div>
+
+        <p>Whether you realize it or not, Generative AI has already become deeply woven into many of the tools and platforms you use every day. From chatbots on retail websites to the AI-generated summaries now appearing at the top of Google searches (a result of its own LLM, Gemini), this technology is no longer something you have to seek out, it’s baked into the digital spaces you already navigate.</p>
+        <p>This quiet integration means that AI is influencing how we search for information, interact with services, and even make decisions, often without us fully noticing. As this technology becomes more embedded in everything from search engines to productivity software, it’s important to recognize both its potential and its limitations. While it can speed things up or offer new ways to approach a task, it also shapes what we see, how we solve problems, and which voices get amplified.</p>
+        <p>In computing specifically, AI shows up in a range of roles, not just as a flashy tool for generating text or images, but as something that can impact how we code, debug, research, and even learn. It’s becoming a common layer across tools students and developers rely on. That makes it all the more important to not only learn how to use AI effectively, but to critically engage with how it works, what assumptions it carries, and when to question its output.</p>
+        <p>As AI becomes more embedded in everyday tech, it’s no longer just a specialized tool for experts, it’s something students, creatives, and developers are already expected to navigate. Whether you’re aware of it or not, you’re entering an academic and professional world where knowing how to work with AI is becoming just as important as knowing how to work without it.</p>
+
+        <p>So what does that actually look like in practice?</p>
+        <p>Here are a few ways you might start to interact with AI in your daily work and some things to keep in mind as you do:</p>
+
+
+        <h3 class="subtitle">AI in Debugging</h3>
+        <p>If you’ve ever found yourself staring at an error message for way too long, you’re definitely not alone. AI tools can be surprisingly helpful here, they can explain what an error might mean, walk you through possible fixes, or even suggest what to try next. That said, they’re not perfect. They won’t replace your own understanding, and sometimes they can send you in the wrong direction. What I’ve found is that they’re most helpful when you give them context, show them what you’re working with, explain what you’re trying to do, and walk through your thought process. The more information you provide, the more useful and accurate their suggestions tend to be. Treat them as a partner in your debugging, not a shortcut.</p>
+
+        <h3 class="subtitle">AI as a Brainstorming Assistant</h3>
+        <p>At the start of a project, when you’re staring at a blank page or screen, AI can be a good way to break through the block. Whether you’re outlining a paper, planning a project, or just trying to get your thoughts in order, it’s helpful to have something to bounce ideas off of, and that’s where AI can shine. It might throw out ideas you hadn’t thought of or help you see your problem from a different angle. Just keep in mind that a lot of its suggestions tend to be safe or familiar. If you’re aiming for something original, you’ll still need to dig deeper. Think of AI more like a conversation partner, sometimes, just hearing an idea out loud (even if it’s a bit off) can help you get to something better.</p>
+
+        <h3 class="subtitle">AI in Code Generation</h3>
+        <p>AI can be a real time-saver when it comes to generating code, especially for repetitive or boilerplate-heavy tasks. Tools like Copilot, ChatGPT, or Claude can fill in functions, suggest syntax, or help you scaffold larger pieces of code. But here’s the catch: just because the code runs doesn’t mean it’s correct or that you understand what it’s doing. It’s really important to read through and test everything it gives you. Use these tools to help you work faster, not to skip the learning part. They can be great for understanding unfamiliar code or getting unstuck, but don’t let them become a crutch. A good programmer can become a great one with AI as a support, but if you don’t understand the fundamentals, the tool won’t bridge that gap for you.</p>
+
+        <h3 class="subtitle">AI in Research</h3>
+        <p>When you’re starting a research project and feeling overwhelmed, AI can help you get your bearings. It’s useful for summarizing long texts, drafting rough outlines, or even surfacing potential topics or questions. That said, be careful. AI doesn’t always get things right, it can misrepresent ideas, cite outdated info, or even invent sources that sound real but aren’t. Some models now include links to actual sources, which is a step forward, but don’t take anything at face value. Always double-check the information, especially citations. Think of AI as a way to speed up the “getting started” phase, it can give you a solid launchpad, but the deeper research and critical thinking still have to come from you.</p>
+        <br>
+        <p>From the examples above, or even on your own how are you using AI?</p>
+        <input class="input" type="text" placeholder="Write your answer..." id="customUseInput">
+
+
+        <!-- using the person's prior answers generate a customized statement about the uses of ai for them -->
+        <p class="custom-uses"></p>
+
+        <button class="button is-success mt-4" onclick="nextSection('stances')">Next</button>
+    </section>
+
+    <section id="work-in-progress" class="container content">
+      <h3 class="title" style="color: gray;">Work in Progress</h3>
+    </section>
+
+
+    <!-- Stances Section -->
+    <!--<section id="stances" class="container content">
+      <h2 class="title">Stances on AI: Ethics and Opinions</h2>
+      <form id="stanceForm">
+        <div class="field">
+          <label class="label" for="stance">How do you feel about AI in education?</label>
+          <div class="control">
+            <div class="select">
+              <select id="stance" name="stance">
                 <option value="excited">Excited</option>
-                <option value="curious">Curious</option>
+                <option value="curious">I'm curious about AI.</option>
                 <option value="cautious">Cautious</option>
                 <option value="concerned">Concerned</option>
-                </select>
-                <button type="submit">Submit</button>
-            </form>
-            <div id="stanceResponse"></div>
-            <button onclick="nextSection('responsible-use')">Next</button>
-            </section>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button class="button is-primary" type="submit">Submit</button>
+      </form>
+      <div id="stanceResponse" class="mt-4"></div>
+      <button class="button is-success" onclick="nextSection('responsible-use')">Next</button>
+    </section> -->
 
-            <section id="responsible-use">
-            <h2>Responsible AI Use</h2>
-            <p>Best practices for using AI responsibly.</p>
-            <button onclick="nextSection('tools')">Next</button>
-            </section>
+    <!-- Responsible Use Section -->
+    <!--<section id="responsible-use" class="container content">
+      <h2 class="title">Responsible AI Use</h2>
+      <p>Best practices for using AI responsibly.</p>
+      <button class="button is-success" onclick="nextSection('tools')">Next</button>
+    </section>-->
 
-            <section id="tools">
-            <h2>Practical AI Tools for Students</h2>
-            <p>Tool recommendations based on your interests.</p>
-            <button onclick="nextSection('future')">Next</button>
-            </section>
+    <!-- Tools Section -->
+    <!--<section id="tools" class="container content">
+      <h2 class="title">Practical AI Tools for Students</h2>
+      <p>Tool recommendations based on your interests.</p>
+      <button class="button is-success" onclick="nextSection('future')">Next</button>
+    </section>-->
 
-            <section id="future">
-            <h2>AI and the Future of Your Career</h2>
-            <p>What role will AI play in your future?</p>
-            <button onclick="nextSection('wrap-up')">Next</button>
-            </section>
+    <!-- Future Section -->
+    <!--<section id="future" class="container content">
+      <h2 class="title">AI and the Future of Your Career</h2>
+      <p>What role will AI play in your future?</p>
+      <button class="button is-success" onclick="nextSection('wrap-up')">Next</button>
+    </section>-->
 
-            <section id="wrap-up">
-            <h2>Wrap-Up and Personalized Plan</h2>
-            <div id="personalizedPlan"></div>
-            </section>
-        </main>
+    <!-- Wrap-Up Section -->
+    <section id="wrap-up" class="container content">
+        <h2 class="title">Wrap-Up and Personalized Plan</h2>
+        <img id="aiImageMovingForward" src="/assets/img/loading.gif" alt="AI Concept Image">
+      
+      <button class="button is-link mt-4" onclick="generateCheatSheet()">Generate My AI Cheat Sheet</button>
 
-        <script src="/src/main.js"></script>
-    </body>
+      <div id="personalizedPlan"></div>
+
+    </section>
+
+    <p>GIF by <a href="https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=32">Daniel Roberts</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=32">Pixabay</a></p>
+  </main>
+
+  <!-- JS -->
+  <script src="/src/main.js"></script>
+</body>
 </html>
