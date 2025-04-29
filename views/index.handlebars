@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- pdf library -->
+  <!-- html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -29,7 +37,7 @@
         <a class="navbar-item" href="#welcome">Welcome</a>
         <a class="navbar-item" href="#what-is-ai">What is AI?</a>
         <a class="navbar-item" href="#faces-of-ai">Faces of AI</a>
-        <a class="navbar-item" href="#stances">Stances on AI</a>
+        <a class="navbar-item" href="#stances-on-ai">Stances on AI</a>
         <a class="navbar-item" href="#responsible-use">Responsible Use</a>
         <a class="navbar-item" href="#tools">AI Tools</a>
         <a class="navbar-item" href="#future">AI & Career</a>
@@ -39,49 +47,52 @@
     </nav>
 
     <!-- Header -->
-    <section class="hero is-info is-small has-text-centered" style="position: relative; overflow: hidden; margin-top: 0;">
-    <div class="hero-body">
-        <div class="container">
-
-        <!-- Decorative Background Shape (optional for style) -->
-        <div style="position: absolute; top: -50px; left: -50px; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent); z-index: 0;"></div>
-        <img id="aiImageHeader" src="/assets/img/loading.gif" alt="AI Concept Image">
-
-        <!-- Main Title -->
-        <h1 class="title has-text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative; z-index: 1;">
-            AI Student Guide
+    <section style="display: flex; height: 600px; overflow: hidden; margin: 0; padding: 0;">
+      <!-- Left side: Title -->
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 2rem;">
+        <h1 style="font-size: 3rem; line-height: 1.2; margin-bottom: 0.5rem;">
+          AI Student Guide
         </h1>
-
-        <!-- Optional Subtitle -->
-        <p class="subtitle has-text-light" style="position: relative; z-index: 1;">
-            Learn, explore, and grow your AI skills with confidence.
+        <p style="font-size: 1.25rem; color: #555;">
+          Learn, explore, and grow your AI skills with confidence.
         </p>
+      </div>
 
-        </div>
-    </div>
+      <!-- Right side: Image -->
+      <div style="flex: 1; overflow: hidden;">
+        <img id="aiImageHeader" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+      </div>
     </section>
+
+
+
 
 
   <main class="section">
     <!-- Welcome Section -->
     <section id="welcome" class="container content">
+    <div class="has-text-centered">
+      <img id="aiImageWelcome" src="/assets/img/loading.gif" alt="AI Concept Image"
+        style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+    </div>
     <h1 class="title">Welcome to the AI Student Guide</h1>
-    <img id="aiImageWelcome" src="/assets/img/loading.gif" alt="AI Concept Image">
+
     <div class="field is-grouped is-align-items-center">
         <button class="button is-link is-small" onclick="playSectionById('welcome', this)">🔊 Listen</button>
         <span class="ml-3 has-text-grey" id="ttsStatus-welcome" style="font-size: 0.9em;"></span>
     </div>
 
 
-    <p>At the beginning of your college career, you no doubt are filled with a bunch of questions and not very many answers. Curiosity about what your life will be like in and out of school, and being even somewhat tangential to the technology sphere means that you have no doubt become aware of Generative AI — and I’d wager have many questions, concerns, and ideas.</p>
+    <p>At the beginning of your college career, you no doubt are filled with a bunch of questions and not very many answers. Curiosity about what your life will be like in and out of school, and being even somewhat tangential to the technology sphere means that you have no doubt become aware of Generative AI, and I’d wager have many questions, concerns, and ideas.</p>
 
     <p>Whether you’re just stepping into your first computing class or you’ve already dabbled in code, one thing is clear: AI is going to be a part of your journey. A big part.</p>
 
-    <p>This guide is here to help you navigate that. Not as a lecture, and not as a warning — but as a toolkit. Whether you’re curious about what AI can do, cautious about its role in education, or just looking for ways to make your study sessions a little more productive and tailored, this guide is built for you.</p>
+    <p>This guide is here to help you navigate that. Not as a lecture, and not as a warning, but as a toolkit. Whether you’re curious about what AI can do, cautious about its role in education, or just looking for ways to make your study sessions a little more productive and tailored, this guide is built for you.</p>
 
     <p><strong>Our goal here is simple:</strong></p>
 
-    <p>I want to show you how to work with AI — not for it, and not have it work for you blindly, but using it as a powerful assistant, while still keeping your own skills sharp and your learning front and center. You are still in the driver’s seat.</p>
+    <p>I want to show you how to work with AI, not for it, and not have it work for you blindly, but using it as a powerful assistant, while still keeping your own skills sharp and your learning front and center. You are still in the driver’s seat.</p>
 
     <ul>
         <li>What AI actually is (beyond the hype),</li>
@@ -95,40 +106,44 @@
 
     <p>To make this guide more personal, we’ll ask you a few quick questions as you go. Your answers will help tailor the experience to your goals.</p>
 
-    <p><strong>So before we dive in — tell us: What brings you here today?</strong></p>
+    <p><strong>So before we dive in, tell us: What brings you here today?</strong></p>
 
     
     </section>
+    <div style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; flex-direction: row-reverse;">
 
-        <img id="aiImageSurvey" src="/assets/img/loading.gif" alt="AI Concept Image">
-    <h3 class="subtitle">Quick Check-In: How Are You Feeling About All This Before we Continue?</h3>
-    <form>
-        <p><strong>1. How familiar do you feel with Generative AI?</strong></p>
-        <label><input type="radio" name="aiFamiliarity" value="I’ve never used it"> I’ve never used it</label><br>
-        <label><input type="radio" name="aiFamiliarity" value="I’ve played around with it a bit"> I’ve played around with it a bit</label><br>
-        <label><input type="radio" name="aiFamiliarity" value="I use it regularly"> I use it regularly</label><br>
-        <label><input type="radio" name="aiFamiliarity" value="I feel super confident using it"> I feel super confident using it</label><br><br>
+      <div class="has-text-centered">
+        <img id="aiImageSurvey" src="/assets/img/loading.gif" alt="AI Concept Image"
+          style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+      </div>
 
-        <p><strong>2. Which best describes how you feel about AI in school/work?</strong></p>
-        <label><input type="radio" name="aiFeeling" value="Excited — I think it’s a helpful tool"> Excited — I think it’s a helpful tool</label><br>
-        <label><input type="radio" name="aiFeeling" value="Curious but unsure"> Curious but unsure</label><br>
-        <label><input type="radio" name="aiFeeling" value="A little overwhelmed"> A little overwhelmed</label><br>
-        <label><input type="radio" name="aiFeeling" value="Worried — I’m not sure how to keep up"> Worried — I’m not sure how to keep up</label><br><br>
+      <div style="flex: 1;">
+        <h3 class="subtitle">Quick Check-In: How Are You Feeling About All This Before we Continue?</h3>
+        <form>
+          <p><strong>1. How familiar do you feel with Generative AI?</strong></p>
+          <label><input type="radio" name="aiFamiliarity" value="I’ve never used it"> I’ve never used it</label><br>
+          <label><input type="radio" name="aiFamiliarity" value="I’ve played around with it a bit"> I’ve played around with it a bit</label><br>
+          <label><input type="radio" name="aiFamiliarity" value="I use it regularly"> I use it regularly</label><br>
+          <label><input type="radio" name="aiFamiliarity" value="I feel super confident using it"> I feel super confident using it</label><br><br>
 
-        <p><strong>3. Has AI already changed how you approach assignments or creative projects?</strong></p>
-        <label><input type="radio" name="aiChange" value="Yes — I use it to brainstorm, draft, or check my work"> Yes — I use it to brainstorm, draft, or check my work</label><br>
-        <label><input type="radio" name="aiChange" value="Not yet, but I want to try"> Not yet, but I want to try</label><br>
-        <label><input type="radio" name="aiChange" value="Not really — I prefer doing things on my own"> Not really — I prefer doing things on my own</label><br>
-        <label><input type="radio" name="aiChange" value="I’m not sure how it would help"> I’m not sure how it would help</label><br><br>
+          <p><strong>2. Which best describes how you feel about AI in school/work?</strong></p>
+          <label><input type="radio" name="aiFeeling" value="Excited, I think it’s a helpful tool"> Excited, I think it’s a helpful tool</label><br>
+          <label><input type="radio" name="aiFeeling" value="Curious but unsure"> Curious but unsure</label><br>
+          <label><input type="radio" name="aiFeeling" value="A little overwhelmed"> A little overwhelmed</label><br>
+          <label><input type="radio" name="aiFeeling" value="Worried, I’m not sure how to keep up"> Worried, I’m not sure how to keep up</label><br><br>
 
+          <p><strong>3. Has AI already changed how you approach assignments or creative projects?</strong></p>
+          <label><input type="radio" name="aiChange" value="Yes, I use it to brainstorm, draft, or check my work"> Yes, I use it to brainstorm, draft, or check my work</label><br>
+          <label><input type="radio" name="aiChange" value="Not yet, but I want to try"> Not yet, but I want to try</label><br>
+          <label><input type="radio" name="aiChange" value="Not really, I prefer doing things on my own"> Not really, I prefer doing things on my own</label><br>
+          <label><input type="radio" name="aiChange" value="I’m not sure how it would help"> I’m not sure how it would help</label><br><br>
 
-        <p><strong>4. One word or phrase that comes to mind when you think about AI in your future?</strong></p>
-        <input class="input" type="text" placeholder="Write your answer..." id="futurePhrase">
+          <p><strong>4. One word or phrase that comes to mind when you think about AI in your future?</strong></p>
+          <input class="input" type="text" placeholder="Write your answer..." id="futurePhrase">
+        </form>
+      </div>
+    </div>
 
-        <!-- maybe add a little pop-up button for questions as you go along that moves with you -->
-        <p><strong>Do you have any questions?</strong></p>
-        <input class="input" type="text" placeholder="Write your answer..." id="questionBox">
-    </form>
     <br>
     <button class="button is-success mt-2" onclick="nextSection('what-is-ai')">Next</button>
     <br>
@@ -136,16 +151,24 @@
     <hr>
 
 
+
+
     <!-- What is AI Section -->
     <section id="what-is-ai" class="container content">
 
-        <h2 class="title">What is AI (and What It Isn’t)</h2>
-        <div id="imageLoader" class="has-text-centered mb-3">
-            <span class="icon is-large is-loading">
-                <i class="fas fa-spinner"></i>
-            </span>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+        <!-- Image on the left -->
+        <div style="flex: 0 0 auto;">
+          <img id="aiImageExplanation" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 350px; height: auto; object-fit: cover; object-position: center;">
         </div>
-        <img id="aiImageExplanation" src="/assets/img/loading.gif" alt="AI Concept Image">
+
+        <!-- Title on the right -->
+        <h2 class="title" style="margin: 0; padding-left: 50px;">
+          What is AI (and What It Isn’t)
+        </h2>
+      </div>
+
         <div class="field is-grouped is-align-items-center">
             <button class="button is-link is-small" onclick="playSectionById('what-is-ai', this)">🔊 Listen</button>
             <span class="ml-3 has-text-grey" id="ttsStatus-what-is-ai" style="font-size: 0.9em;"></span>
@@ -153,11 +176,11 @@
 
         <p>Let’s start with the basics.</p>
 
-        <p>Artificial Intelligence isn’t actually brand new — it’s been quietly working behind the scenes in things like search engines, recommendation systems, and voice assistants for years. But you’re probably thinking, “That’s not the AI everyone’s talking about now,” and you’re right.</p>
+        <p>Artificial Intelligence isn’t actually brand new, it’s been quietly working behind the scenes in things like search engines, recommendation systems, and voice assistants for years. But you’re probably thinking, “That’s not the AI everyone’s talking about now,” and you’re right.</p>
 
-        <p>The big shift is with Generative AI. Unlike older systems that mostly recognized patterns, this kind of AI can create new things — text, images, code, music, and more. That means tasks we used to think were uniquely human, like writing, designing, or composing, can now be (at least partially) done by machines.</p>
+        <p>The big shift is with Generative AI. Unlike older systems that mostly recognized patterns, this kind of AI can create new things, text, images, code, music, and more. That means tasks we used to think were uniquely human, like writing, designing, or composing, can now be (at least partially) done by machines.</p>
 
-        <p>For some, that’s exciting. For others, unsettling. Either way, it’s a big change. AI is now shaping how we work, learn, and even think — and staying curious, critical, and open to learning will help you navigate it.</p>
+        <p>For some, that’s exciting. For others, unsettling. Either way, it’s a big change. AI is now shaping how we work, learn, and even think, and staying curious, critical, and open to learning will help you navigate it.</p>
 
         
 
@@ -170,7 +193,6 @@
     <!-- Faces of AI Section -->
     <section id="faces-of-ai" class="container content">
         <h2 class="title">The Many Faces of AI in Computing</h2>
-        <img id="aiImageFaces" src="/assets/img/loading.gif" alt="AI Concept Image">
         <div class="field is-grouped is-align-items-center">
             <button class="button is-link is-small" onclick="playSectionById('faces-of-ai', this)">🔊 Listen</button>
             <span class="ml-3 has-text-grey" id="ttsStatus-faces-of-ai" style="font-size: 0.9em;"></span>
@@ -184,6 +206,10 @@
         <p>So what does that actually look like in practice?</p>
         <p>Here are a few ways you might start to interact with AI in your daily work and some things to keep in mind as you do:</p>
 
+        <div class="has-text-centered">
+          <img id="aiImageFaces" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+        </div>
 
         <h3 class="subtitle">AI in Debugging</h3>
         <p>If you’ve ever found yourself staring at an error message for way too long, you’re definitely not alone. AI tools can be surprisingly helpful here, they can explain what an error might mean, walk you through possible fixes, or even suggest what to try next. That said, they’re not perfect. They won’t replace your own understanding, and sometimes they can send you in the wrong direction. What I’ve found is that they’re most helpful when you give them context, show them what you’re working with, explain what you’re trying to do, and walk through your thought process. The more information you provide, the more useful and accurate their suggestions tend to be. Treat them as a partner in your debugging, not a shortcut.</p>
@@ -204,62 +230,344 @@
         <!-- using the person's prior answers generate a customized statement about the uses of ai for them -->
         <p class="custom-uses"></p>
 
-        <button class="button is-success mt-4" onclick="nextSection('stances')">Next</button>
+        <button class="button is-success mt-4" onclick="nextSection('stances-on-ai')">Next</button>
     </section>
 
-    <section id="work-in-progress" class="container content">
-      <h3 class="title" style="color: gray;">Work in Progress</h3>
-    </section>
+    <!-- Stances on AI Section -->
+    <section id="stances-on-ai" class="container content">
 
-
-    <!-- Stances Section -->
-    <!--<section id="stances" class="container content">
       <h2 class="title">Stances on AI: Ethics and Opinions</h2>
-      <form id="stanceForm">
-        <div class="field">
-          <label class="label" for="stance">How do you feel about AI in education?</label>
-          <div class="control">
-            <div class="select">
-              <select id="stance" name="stance">
-                <option value="excited">Excited</option>
-                <option value="curious">I'm curious about AI.</option>
-                <option value="cautious">Cautious</option>
-                <option value="concerned">Concerned</option>
-              </select>
-            </div>
-          </div>
+
+      <div id="imageLoaderStances" class="has-text-centered mb-3">
+        <span class="icon is-large is-loading">
+          <i class="fas fa-spinner"></i>
+        </span>
+      </div>
+      <img >
+      <div class="has-text-centered">
+          <img id="aiImageStances" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
         </div>
-        <button class="button is-primary" type="submit">Submit</button>
+
+      <div class="field is-grouped is-align-items-center">
+        <button class="button is-link is-small" onclick="playSectionById('stances-on-ai', this)">🔊 Listen</button>
+        <span class="ml-3 has-text-grey" id="ttsStatus-stances-on-ai" style="font-size: 0.9em;"></span>
+      </div>
+
+      <p>As AI becomes more embedded in the tools and workflows we use every day, it's natural that people will have different feelings about it. Some are excited about the possibilities. Others are curious but cautious. Some are skeptical, scared, frustrated, or prefer to avoid it altogether. No feeling is wrong, each reflects a different approach to AI, and all are valid.</p>
+
+      <p>In this section, the goal isn’t to convince you to feel a certain way. It’s to validate wherever you're starting from and offer guidance on how you might work thoughtfully with AI, no matter your stance.</p>
+
+      <hr>
+
+      <h3 class="subtitle">How Do You Currently Feel About AI in your Education?</h3>
+
+      <form id="aiStanceForm">
+        <label><input type="radio" name="aiStance" value="Excited"> Excited: I’m eager to use AI tools and learn everything I can!</label><br>
+        <label><input type="radio" name="aiStance" value="Curious"> Curious: I’m interested, but I still have some questions.</label><br>
+        <label><input type="radio" name="aiStance" value="Skeptical"> Skeptical: I’m not convinced AI is all that useful or trustworthy.</label><br>
+        <label><input type="radio" name="aiStance" value="Scared"> Scared: I’m worried AI might replace human skills or creativity.</label><br>
+        <label><input type="radio" name="aiStance" value="Avoidant"> Avoidant: I’d rather not use AI unless I absolutely have to.</label><br>
+        <label><input type="radio" name="aiStance" value="Overconfident"> Confident: I trust AI a lot, maybe a little too much sometimes.</label><br>
+        <label><input type="radio" name="aiStance" value="Frustrated"> Frustrated: I’ve tried using AI but it felt confusing or unhelpful.</label><br>
       </form>
-      <div id="stanceResponse" class="mt-4"></div>
-      <button class="button is-success" onclick="nextSection('responsible-use')">Next</button>
-    </section> -->
+
+      <br>
+      <button class="button is-info" onclick="showAdviceBasedOnStance()">See More</button>
+
+      <div id="stanceAdvice" class="mt-4"></div>
+
+      <hr>
+
+
+      <p>Whatever your starting point, remember:</p>
+      <p><strong>Your stance today isn’t fixed.</strong>  As you interact more with AI, whether that’s in coding, writing, research, or projects, you’ll probably refine your opinion.
+        The key is to stay intentional. AI isn’t something you either blindly trust or totally reject, it’s something you learn to use thoughtfully, adapting as the tools and your needs evolve.</p>
+
+      <button class="button is-success mt-4" onclick="nextSection('responsible-use')">Next</button>
+    </section>
+
 
     <!-- Responsible Use Section -->
-    <!--<section id="responsible-use" class="container content">
+    <section id="responsible-use" class="container content">
       <h2 class="title">Responsible AI Use</h2>
-      <p>Best practices for using AI responsibly.</p>
+
+      <div id="imageLoaderStances" class="has-text-centered mb-3">
+        <span class="icon is-large is-loading">
+          <i class="fas fa-spinner"></i>
+        </span>
+      </div>
+      <div class="has-text-centered">
+        <img id="aiImageResponsibility" src="/assets/img/loading.gif" alt="AI Concept Image"
+          style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+      </div>
+
+      <div class="field is-grouped is-align-items-center">
+        <button class="button is-link is-small" onclick="playSectionById('responsible-use', this)">🔊 Listen</button>
+        <span class="ml-3 has-text-grey" id="ttsStatus-responsible-use" style="font-size: 0.9em;"></span>
+      </div>
+      <p>As AI becomes a bigger part of your academic and professional life, knowing how to use it responsibly isn’t just good practice, it’s essential.
+        Using AI well isn’t about letting it do all the work for you. It’s about treating it like a tool: helpful, powerful, but always requiring your oversight.</p>
+      <p>Here are a few best practices to keep in mind as you start working with AI more intentionally:</p>
+
+      <h3>1. Check Outputs, Don’t Blindly Trust</h3>
+      <p><strong>AI often sounds confident, even when it’s wrong.</strong></p>
+      <p>Whether you’re getting a code suggestion, a research summary, or a brainstormed list of ideas, always review what it gives you critically. Ask yourself:</p>
+
+      <ul>
+        <li>Does this actually make sense?</li>
+        <li>Can I verify it with another source?</li>
+        <li>Is there a chance this could be outdated, biased, or just incorrect?</li>
+      </ul>
+      <p><strong>Trust, but verify.</strong> Think of AI outputs as a first draft, not a finished product.</p>
+
+      <h3>2. Understand Its Limits</h3>
+      <p>AI can do a lot, but it has hard limits. It doesn’t "know" things the way people do. It generates patterns based on training data, not real-world understanding. That means:</p>
+
+      <ul>
+        <li>It can make up fake facts ("hallucinations").</li>
+        <li>It can miss nuance or context that a human would catch.</li>
+        <li>It doesn't truly understand ethics, logic, or emotion, it mimics them.</li>
+      </ul>
+      <p>Knowing what AI can’t do is just as important as knowing what it can.</p>
+
+      <h3>3. Maintain Academic Integrity</h3>
+      <p>Using AI ethically means being transparent about when and how you use it.
+ You wouldn't copy a friend's essay and claim it was yours, the same goes for AI.Some basics:</p>
+
+      <ul>
+        <li>Don’t submit AI-generated work without understanding it, you’re responsible for what you turn in.</li>
+        <li>When in doubt, disclose your use. (Example: "I used ChatGPT to brainstorm initial ideas for this paper.")</li>
+        <li>Follow your institution’s AI policies, different professors and departments may have different rules about acceptable use.</li>
+      </ul>
+      <p>Using AI responsibly shows integrity and protects your own learning.</p>
+
+      <h3>4. The More You Give It, The More It Gives You</h3>
+      <p>When working with AI, how you ask matters.The more background, examples, and goals you provide, the better the responses you’ll get.
+        Compare:</p>
+
+      <ul>
+        <li>❌ "Help me write this paper."</li>
+        <li>✅ "I’m writing a 3-page analysis on the ethics of AI in education. Can you suggest 3 angles I could take, focusing on real-world examples?"</li>
+      </ul>
+      <p>Be specific. Be clear. Treat AI like a teammate you have to brief carefully. Good inputs lead to useful outputs.</p>
+
+      <h3>5. Credit AI Like You Would a Source or Teammate</h3>
+      <p>If you used an AI tool to assist with your work, even just for brainstorming, it’s good practice to acknowledge it. Depending on your context, that could mean:</p>
+
+      <ul>
+        <li>A footnote in a paper ("Draft outline generated using ChatGPT, revised and expanded by the author.")</li>
+        <li>A comment in your code ("Function scaffold suggested by GitHub Copilot, optimized and documented by me.")</li>
+        <li>A quick note to your instructor or team.</li>
+      </ul>
+      <p>Citing AI use doesn’t make you look lazy, it shows you’re being honest and responsible about your process.</p>
+
+      <h3>6. Stay Involved in the Process</h3>
+      <p>AI can suggest, summarize, and speed things up, but you should always stay the active participant. Your role is to:</p>
+
+      <ul>
+        <li>Decide what to keep or discard.</li>
+        <li>Add your own voice, thinking, and analysis.</li>
+        <li>Make sure the final product truly reflects your understanding.</li>
+      </ul>
+      <p>Think of AI like an idea generator or assistant. It can help expand your thinking, but it can’t replace your thinking. You’re still the author, the coder, the researcher, the creator.</p>
+
+      <br>
+      <p><strong>Learning how to work with AI responsibly takes practice.</strong></p>
+      <p> But the habits you build now, verifying information, staying transparent, thinking critically, are the same habits that will make you a stronger student, developer, and professional in the long run.</p>
+      <p>At the end of the day, AI is a tool. You are the mind behind the work.</p>
+
       <button class="button is-success" onclick="nextSection('tools')">Next</button>
-    </section>-->
+    </section>
 
-    <!-- Tools Section -->
-    <!--<section id="tools" class="container content">
+
+    <section id="tools" class="container content">
+
       <h2 class="title">Practical AI Tools for Students</h2>
-      <p>Tool recommendations based on your interests.</p>
-      <button class="button is-success" onclick="nextSection('future')">Next</button>
-    </section>-->
 
-    <!-- Future Section -->
-    <!--<section id="future" class="container content">
+      <div id="imageLoaderTools" class="has-text-centered mb-3">
+        <span class="icon is-large is-loading">
+          <i class="fas fa-spinner"></i>
+        </span>
+      </div>
+      <div class="has-text-centered">
+          <img id="aiImageTools" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+        </div>
+
+      <div class="field is-grouped is-align-items-center">
+        <button class="button is-link is-small" onclick="playSectionById('tools', this)">🔊 Listen</button>
+        <span class="ml-3 has-text-grey" id="ttsStatus-tools" style="font-size: 0.9em;"></span>
+      </div>
+
+      <p>When you hear about AI, it’s easy to picture a big, complicated system you’ll only encounter in a research lab or corporate tech stack. But the truth is, AI tools are already part of the everyday workflow for many students, developers, researchers, and creatives, often in surprisingly accessible ways.</p>
+
+      <p>Instead of thinking of AI as one giant thing you need to master, it’s more helpful to think about what you actually want to improve first. Different AI tools are good for different goals: helping you debug code, brainstorm ideas, organize research, or stay more productive.</p>
+
+      <p>The key isn’t to chase every shiny new app, it’s to find targeted, reliable tools that can support your learning and work, while still keeping you in the driver’s seat.</p>
+
+      <p>In this section, we’ll walk through a few common areas where AI can be practically useful for students, with examples of specific tools to explore if you’re interested.</p>
+
+      <hr>
+
+      <h3 class="subtitle">Using AI for Coding Help</h3>
+      <p>For many students in computing and engineering, the first major use of AI is as a coding assistant. Tools like GitHub Copilot, ChatGPT, and Replit Ghostwriter can:</p>
+      <ul>
+        <li>Suggest code snippets based on comments or patterns.</li>
+        <li>Help debug errors when you're stuck.</li>
+        <li>Scaffold basic functions or templates to get you moving faster.</li>
+      </ul>
+      <p>When used carefully, these tools can speed up your development process, help you learn new languages or frameworks, and even make solo projects more manageable. Just remember: the goal is to understand what you’re building, not just paste what the AI suggests. If you ever find yourself accepting code you don’t fully understand, that’s a good signal to slow down and dig deeper.</p>
+
+      <hr>
+
+      <h3 class="subtitle">Using AI for Study Tools</h3>
+      <p>Keeping up with multiple classes, assignments, and exams can get overwhelming fast. AI-powered study tools can help lighten the mental load by:</p>
+      <ul>
+        <li>Generating flashcards from your notes (Quizlet AI).</li>
+        <li>Helping explain tricky homework questions (Socratic).</li>
+        <li>Organizing study schedules or creating mock quizzes (ChatGPT custom prompts).</li>
+      </ul>
+      <p>These tools don’t replace studying, but they can streamline how you prepare, helping you focus your energy where it’s most needed. And again, it’s important to verify: AI-generated study materials sometimes oversimplify or miss nuance, especially in complex subjects.</p>
+
+      <hr>
+
+      <h3 class="subtitle">Using AI for Brainstorming and Creative Work</h3>
+      <p>Whether you're writing an essay, designing an app, or planning a group project, getting started is often the hardest part. This is where AI can really shine:</p>
+      <ul>
+        <li>Brainstorming possible angles for a paper or presentation.</li>
+        <li>Outlining project ideas.</li>
+        <li>Suggesting creative approaches you hadn’t considered.</li>
+      </ul>
+      <p>Tools like ChatGPT, Claude, Gemini, or specialized writing tools like Notion AI and Sudowrite can act like a thought partner, someone to bounce early ideas off of without the pressure of needing perfection. The important thing to remember is that AI is good at sparking ideas, but the real creativity, analysis, and critical thinking still have to come from you.</p>
+
+      <hr>
+
+      <h3 class="subtitle">Using AI for Research Support</h3>
+      <p>Starting a big research project can feel like standing at the edge of a giant maze. AI tools like Elicit, Consensus, and Scite can help you:</p>
+      <ul>
+        <li>Find relevant academic papers.</li>
+        <li>Summarize large bodies of research quickly.</li>
+        <li>See how different studies connect and evolve over time.</li>
+      </ul>
+      <p>Used well, these tools can shorten the time it takes to get oriented on a topic and make it easier to spot promising directions for deeper research. But like with all AI outputs: don't take summaries at face value. Always check sources directly, especially if you're using information in academic work.</p>
+
+      <hr>
+
+      <h3 class="subtitle">Using AI for Organization and Productivity</h3>
+      <p>Not every use of AI has to be flashy. Sometimes the most powerful thing AI can do for you is make it easier to manage your time and energy. Tools like Notion AI, Trello AI assistants, and even structured ChatGPT prompts can help:</p>
+      <ul>
+        <li>Break down large assignments into smaller, manageable steps.</li>
+        <li>Build checklists or timelines for long-term projects.</li>
+        <li>Prioritize tasks when everything feels overwhelming.</li>
+      </ul>
+      <p>Used thoughtfully, AI can help you stay more focused and strategic, without feeling like you’re constantly scrambling.</p>
+
+      <br><br>
+      <p>The bottom line:</p>
+      <p><strong> AI isn’t here to replace your skills, it’s here to assist them.</strong></p>
+      <p> By choosing tools thoughtfully, setting clear goals, and staying critical about what AI suggests, you can build a workflow that’s not just faster, but smarter.</p>
+      <p>You don’t need to use everything. Start with one or two tools that match your real needs, and grow from there.</p>
+
+      <button class="button is-success mt-4" onclick="nextSection('future')">Next</button>
+    </section>
+
+
+
+
+    <section id="future" class="container content">
+
       <h2 class="title">AI and the Future of Your Career</h2>
-      <p>What role will AI play in your future?</p>
-      <button class="button is-success" onclick="nextSection('wrap-up')">Next</button>
-    </section>-->
+
+      <div id="imageLoaderCareer" class="has-text-centered mb-3">
+        <span class="icon is-large is-loading">
+          <i class="fas fa-spinner"></i>
+        </span>
+      </div>
+
+      <div class="field is-grouped is-align-items-center">
+        <button class="button is-link is-small" onclick="playSectionById('future', this)">🔊 Listen</button>
+        <span class="ml-3 has-text-grey" id="ttsStatus-future" style="font-size: 0.9em;"></span>
+      </div>
+
+      <p>When you imagine your future career, it’s easy to focus on the skills you’re building right now: coding, design, writing, research, whatever your specialty might be. But increasingly, understanding how to work with AI is becoming just as important as mastering your core craft.</p>
+
+      <p>In almost every field, from engineering to healthcare to creative industries, AI isn’t just an optional bonus skill anymore. It’s becoming part of the basic landscape:</p>
+
+      <ul>
+        <li>Software engineers use AI-assisted development tools.</li>
+        <li>Writers and marketers use AI for content generation and ideation.</li>
+        <li>Researchers use AI to sort, summarize, and organize data.</li>
+        <li>Designers use AI to prototype faster and explore new creative directions.</li>
+      </ul>
+
+      <p>And even in fields where AI doesn’t seem like a major player yet, that could change fast. One of the biggest career skills you can build isn’t just technical ability, it’s the ability to adapt.</p>
+
+      <hr>
+
+      <div class="has-text-centered">
+          <img id="aiImageCareer" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+        </div>
+
+      <h3>Staying Adaptable in an AI-Driven World</h3>
+
+      <p>The truth is, nobody knows exactly what every job will look like in 5 or 10 years. Some roles will transform. Some new roles will emerge that don't even exist yet. Some old roles will require new ways of thinking.</p>
+
+      <p>That can feel intimidating, and honestly, it is intimidating sometimes. It’s okay to feel overwhelmed or uncertain. Most of us are right there with you.</p>
+
+      <p>But the students and professionals who will thrive aren't necessarily the ones who know everything right now. They’re the ones who:</p>
+
+      <ul>
+        <li>Stay curious.</li>
+        <li>Stay flexible.</li>
+        <li>Keep learning and re-learning as the landscape shifts.</li>
+      </ul>
+
+      <p>The best thing you can do for your future isn’t to try to predict exactly how AI will change your field, it’s to build the habits of resilience and learning that will let you keep growing, no matter what changes come.</p>
+
+      <h3 class="subtitle">Quick Reflection</h3>
+      <p><strong>What role do you think AI might play in your future career?</strong></p>
+
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" id="dreamJobReflection" placeholder="Write your answer here...">
+        </div>
+      </div>
+
+      <hr>
+
+
+      <p>The future isn’t about becoming a machine or fighting against change. It’s about learning to work with new tools thoughtfully, asking good questions, and bringing your own creativity and judgment into every project you do.</p>
+
+      <p><strong>Your ability to adapt, not just your ability to memorize, is what will keep you valuable, fulfilled, and excited about the work you’re doing.</strong></p>
+
+      <p>And you don’t have to figure it all out today. Start with small steps. Stay curious. Keep moving.</p>
+
+      <button class="button is-success mt-4" onclick="nextSection('wrap-up')">Next</button>
+    </section>
+
 
     <!-- Wrap-Up Section -->
     <section id="wrap-up" class="container content">
         <h2 class="title">Wrap-Up and Personalized Plan</h2>
-        <img id="aiImageMovingForward" src="/assets/img/loading.gif" alt="AI Concept Image">
+        <p>You've made it to the end of this practical Generative AI guide — great job!</p>
+
+        <p>I hope the information here has helped you start shaping your approach to using AI tools thoughtfully in your education and beyond.</p>
+
+        <p>Before you head out, there’s just one more step:</p>
+
+        <p>I’ve included a quick box below where you can share any final questions you still have.</p>
+
+        <p>And after that, you’ll be able to generate your own <strong>personalized cheat sheet</strong>, a useful summary of what you’ve explored today, along with some tailored tips you can take with you!</p>
+        
+        <div class="has-text-centered">
+          <img id="aiImageConclusion" src="/assets/img/loading.gif" alt="AI Concept Image"
+            style="width: 100%; max-width: 400px; height: auto; object-fit: cover; object-position: center;">
+        </div>
+
+        <p><strong>Do you have any questions?</strong></p>
+          <input class="input" type="text" placeholder="Write your answer..." id="questionBox">
       
       <button class="button is-link mt-4" onclick="generateCheatSheet()">Generate My AI Cheat Sheet</button>
 
@@ -267,7 +575,8 @@
 
     </section>
 
-    <p>GIF by <a href="https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=32">Daniel Roberts</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=32">Pixabay</a></p>
+    <p>This article was created and developed by Reva Sathe, with the assistance of ChatGPT</p>
+    <p>Loading GIF by <a href="https://pixabay.com/users/blendertimer-9538909/?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=32">Daniel Roberts</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=animation&utm_content=32">Pixabay</a></p>
   </main>
 
   <!-- JS -->

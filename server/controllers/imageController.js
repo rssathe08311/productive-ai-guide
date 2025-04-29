@@ -7,7 +7,7 @@ const getImageResponse = async (req, res, openai) => {
         model: "dall-e-3", 
         prompt,
         n: n || 1,
-        size: size || "512x512",
+        size: size || "1024x1024",
       });
   
       const imageData = response.data;
